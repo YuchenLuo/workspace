@@ -1,0 +1,154 @@
+"  :version
+"  :echo expand('~')
+"  :echo $HOME
+"  :echo $VIM
+"  :echo $VIMRUNTIME
+
+" Notes
+" gg=G       Top of file, fix indent global
+" gg         Go to top
+" ctrl-tab   Move between split panes
+" ctrl-click Move up and down tag chains
+"
+" See:
+"    http://vimdoc.sourceforge.net/htmldoc/options.html
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin on              "
+
+" MOUSE
+set mousemodel=popup
+
+
+" GUI
+set guioptions=m                " Show menu bar only, add e to use tab line
+"set showtabline=2               " Always show tab line
+
+colorscheme desert
+
+" EDITOR
+set noim                " gets rid of evim's default insert mode
+set ignorecase          " Case insensitive searching
+set smartcase           " Ignores case when searching using an all lower case a
+                        " string.  Note, this only works in combination with 
+                        " "set ignorecase"
+
+"set virtualedit=all
+
+syntax on
+set number                      " Line numbers
+set showmatch                   " Show mathcing brackets
+
+set ttyfast
+set ruler
+
+"set incsearch                  " Search as you type
+set hls                         " Turn on search highlighting
+" Clear seach highlighing (once it starts bothering you)
+nmap <C-K> :noh<CR>
+
+" Highlights text past column 80                                            like thus.
+"highlight OverLength ctermbg=red ctermfg=white guibg=#B13E0F
+"match OverLength /\%81v.\+/
+
+" highlights 80th column
+"set colorcolumn=80
+
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" KEYMAPS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tabbing
+nmap <S-T> :tabnew<cr>
+" quick quit
+nmap <S-q> :q<cr>
+
+" map Ctrl-C/V to copy/paste (as the Microsoft generation is hopelessly used to)
+"nmap <C-V> ]p
+nmap <C-V> "+p
+imap <C-V> <ESC><C-V>a
+vmap <C-V> "+gP
+
+vmap <C-C> "+y
+
+nmap <C-Z> u
+imap <C-Z> <ESC><C-Z>i
+vmap <C-Z> <ESC><C-Z>v
+
+nmap <C-S> :w<CR>
+imap <C-S> <ESC><C-S>a
+
+
+" Gives you 4 spaces instead of a tab character when tabbing
+" set expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Autocommands:
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Astyle Integration
+" autocmd BufNewFile,BufRead *.c set formatprg=astyle\ -T4pb
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGINS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vtreeexplorer
+let treeExplVertical=1
+let treeExplWinSize=35
+nmap <F2> :VSTreeExplore<cr>
+
+" Tagbar
+nmap <F3> :TagbarToggle<CR> 
+
+
+
+
+
+
+
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" APPLICATION SPECIFIC 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Custom type names
+syn keyword     cType           GLint
+syn keyword     cType           GLuint
+
+
+" RIM SPECIFICS
+"autocmd BufEnter ~/src/hibachi/* :setlocal tags+=~/src/hibachi/tags
+"autocmd BufEnter ~/src/p4-dev/dev/brilee/vendor/rsource/trunk/* :setlocal tags +=~/src/p4-dev/dev/brilee/vendor/rsource/trunk/tags
+ autocmd BufRead,BufNewFile *.rcp    set filetype=python
+ autocmd BufRead,BufNewFile *.conf   set filetype=xml
+ autocmd BufRead,BufNewFile *.avp    set filetype=c
+ autocmd BufRead,BufNewFile *.min    set filetype=Makefile
+ autocmd BufRead,BufNewFile *.def    set filetype=c
+
+ " Syntax Highlighting for RIM basetypes
+ syn keyword     cType           BYTE SBYTE WORD SWORD DWORD SDWORD QWORD SQWORD BOOL
+ syn keyword     cType           IOBYTE IOWORD IODWORD IOQWORD
+ syn keyword     cType           LONG UINT DOUBLE FLOAT FUNCTION TASK
+ syn keyword     cType           APIFUNC IPIFUNC
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tags:
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" :set tags=tags\ /ws/p4/ylqnxUSB/ap/msm/tags
+
+
+
+
